@@ -13,5 +13,10 @@ jobs:
           docker login docker.io -u ${{ secrets.DOCKERUSERNAME }} -p ${{ secrets.DOCKERAPIKEY }}
       - name: build image
         run: | 
-          docker build -t rjpadilla/mystery:original .
-          docker push docker.io/rjpadilla/mystery:original
+          repo="rjpadilla/mystery"
+          tag1="orginal"
+          tag2="tagged"
+          docker build -t $repo:$tag1 .
+          docker tag $repo:$tag1 $repo:tag2
+          docker push docker.io/$repo:$tag1
+          docker push docker.io/$repo:$tag2
