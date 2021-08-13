@@ -1,0 +1,17 @@
+name: deploy to docker hub
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+      - name: container registries
+        run: |
+          docker login docker.io -u ${{ secrets.DOCKERUSERNAME }} -p ${{ secrets.DOCKERAPIKEY }}
+      - name: build image
+        run: | 
+          docker build -t rjpadilla/mystery:original .
+          docker push docker.io/rjpadilla/mystery:original
