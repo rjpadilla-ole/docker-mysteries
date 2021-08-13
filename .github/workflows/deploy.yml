@@ -18,6 +18,6 @@ jobs:
           tag2="tagged"
           docker build -t $repo:$tag1 .
           docker tag $repo:$tag1 $repo:$tag2
-          docker image push --all-tags docker.io:$repo
+          docker push --all-tags docker.io/$repo
           # docker push docker.io/$repo:$tag1
           # docker push docker.io/$repo:$tag2
