@@ -14,7 +14,7 @@ jobs:
       - name: build image
         run: | 
           repo="rjpadilla/mystery"
-          tag1="orginal"
+          tag1="original"
           tag2="tagged"
           docker build -t $repo:$tag1 .
           docker tag $repo:$tag1 $repo:tag2
